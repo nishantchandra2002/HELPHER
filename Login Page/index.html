@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ===== CSS ===== -->
+    <link rel="stylesheet" href="C:\Users\nisha\OneDrive\Desktop\dti_helpHer\helper\Medical-Website\Login Page\styles.css">
+
+    <!-- ===== BOX ICONS ===== -->
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+
+    <title>Login form responsive</title>  
+</head>
+<body>
+    <div class="l-form">
+        <div class="shape1"></div>
+        <div class="shape2"></div>
+
+        <div class="form">
+            <img src="assets/img/authentication.svg" alt="" class="form__img">
+
+            <form action="#" class="form__content" id="loginForm">
+                <h1 class="form__title">Welcome</h1>
+
+                <div class="form__div form__div-one">
+                    <div class="form__icon">
+                        <i class='bx bx-user-circle'></i>
+                    </div>
+
+                    <div class="form__div-input">
+                        <label for="username" class="form__label">Username</label>
+                        <input type="text" class="form__input" id="username" required>
+                    </div>
+                </div>
+
+                <div class="form__div">
+                    <div class="form__icon">
+                        <i class='bx bx-lock' ></i>
+                    </div>
+
+                    <div class="form__div-input">
+                        <label for="password" class="form__label">Password</label>
+                        <input type="password" class="form__input" id="password" required>
+                    </div>
+                </div>
+
+                
+                <div class="form__div">
+                    <div class="form__icon">
+                         <i class='bx bx-shield'></i>
+                    </div>
+                    <div class="form__div-input">
+        
+                        <label for="captchaInput" class="form__label">Captcha code</label>
+                        <input type="text" class="form__input" id="captchaInput" required>
+                    
+                </div>
+                <div class="captcha-display">
+                    <span id="captchaText"></span>
+                </div>
+    
+                </div>
+
+
+
+                <a href="#" class="form__forgot">Forgot Password?</a>
+
+                <input type="submit" class="form__button" value="Login">
+
+                <div class="form__social">
+                    <span class="form__social-text">Our login with</span>
+
+                    <a href="#" class="form__social-icon"><i class='bx bxl-facebook' ></i></a>
+                    <a href="#" class="form__social-icon"><i class='bx bxl-google' ></i></a>
+                    <a href="#" class="form__social-icon"><i class='bx bxl-instagram' ></i></a>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- ===== MAIN JS ===== -->
+    <script src="/Users/d4jain/Desktop/helper/Medical-Website/Login Page/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Generate captcha
+            function generateCaptcha() {
+                var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+                var length = 6;
+                var captcha = '';
+                for (var i = 0; i < length; i++) {
+                    captcha += chars.charAt(Math.floor(Math.random() * chars.length));
+                }
+                return captcha;
+            }
+
+            // Display captcha
+            var captchaText = document.getElementById('captchaText');
+            var captchaInput = document.getElementById('captchaInput');
+            var captchaValue = generateCaptcha();
+            captchaText.textContent = captchaValue;
+
+            // Form submission
+            var loginForm = document.getElementById('loginForm');
+            loginForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+                var enteredCaptcha = captchaInput.value.trim();
+                if (enteredCaptcha === captchaValue) {
+                    alert('Login successful!');
+                    // Here you can redirect the user to another page or perform other actions after successful login
+                } else {
+                    alert('Captcha code is wrong. Please try again.');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
